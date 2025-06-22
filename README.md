@@ -4,7 +4,7 @@ An Elixir client for [fal.ai](https://fal.ai) - Serverless AI/ML inference platf
 
 [![Hex.pm](https://img.shields.io/hexpm/v/fal_ex.svg)](https://hex.pm/packages/fal_ex)
 [![Documentation](https://img.shields.io/badge/documentation-gray)](https://hexdocs.pm/fal_ex)
-[![License](https://img.shields.io/hexpm/l/fal_ex.svg)](https://github.com/dantame/fal_ex/blob/main/LICENSE)
+[![License](https://img.shields.io/hexpm/l/fal_ex.svg)](https://github.com/dantame/fal_ex/blob/master/LICENSE)
 
 ## About
 
