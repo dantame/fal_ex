@@ -1,6 +1,6 @@
 defmodule FalEx do
   @moduledoc """
-  The official Elixir client for fal.ai.
+  An Elixir client for fal.ai.
 
   FalEx provides a simple interface to run AI models on fal.ai's
   serverless platform. It supports synchronous execution, queued jobs,
@@ -21,7 +21,7 @@ defmodule FalEx do
   Configure your API credentials using environment variables:
 
       export FAL_KEY="your-api-key"
-      
+
   Or configure programmatically:
 
       FalEx.config(credentials: "your-api-key")
@@ -29,23 +29,23 @@ defmodule FalEx do
   ## Basic Usage
 
       # Simple synchronous execution
-      {:ok, result} = FalEx.run("fal-ai/fast-sdxl", 
+      {:ok, result} = FalEx.run("fal-ai/fast-sdxl",
         input: %{
           prompt: "A cute cat wearing a hat"
         }
       )
-      
+
       # Queue-based execution with status updates
       {:ok, result} = FalEx.subscribe("fal-ai/fast-sdxl",
         input: %{prompt: "A mountain landscape"},
         on_queue_update: fn status -> IO.inspect(status) end
       )
-      
+
       # Streaming responses
       stream = FalEx.stream("fal-ai/llava-v15",
         input: %{prompt: "Tell me a story"}
       )
-      
+
       stream
       |> Stream.each(fn chunk -> IO.write(chunk.data) end)
       |> Stream.run()
@@ -94,7 +94,7 @@ defmodule FalEx do
   ## Examples
 
       FalEx.config(credentials: System.get_env("FAL_KEY"))
-      
+
       FalEx.config(
         credentials: {"key_id", "key_secret"},
         proxy_url: "/api/fal/proxy"
@@ -127,7 +127,7 @@ defmodule FalEx do
           image_size: "square"
         }
       )
-      
+
   ## Notes
 
   This function blocks until the model execution completes. For long-running
@@ -183,7 +183,7 @@ defmodule FalEx do
   ## Examples
 
       # Stream image generation with progress updates
-      {:ok, stream} = FalEx.stream("fal-ai/flux/dev", 
+      {:ok, stream} = FalEx.stream("fal-ai/flux/dev",
         input: %{
           prompt: "a cat",
           seed: 6252023,
@@ -191,10 +191,10 @@ defmodule FalEx do
           num_images: 4
         }
       )
-      
+
       # Process each event as it arrives
       stream
-      |> Stream.each(fn event -> 
+      |> Stream.each(fn event ->
         IO.inspect(event, label: "Stream event")
       end)
       |> Stream.run()
@@ -205,7 +205,7 @@ defmodule FalEx do
           events = Enum.to_list(stream)
           IO.puts("Received \#{length(events)} events")
           # The last event typically contains the final result
-          
+
         {:error, reason} ->
           IO.puts("Error: \#{inspect(reason)}")
       end
