@@ -18,11 +18,25 @@ defmodule FalEx do
 
   ## Configuration
 
-  Configure your API credentials using environment variables:
+  The recommended way to configure FalEx is through your application configuration:
+
+      # config/config.exs
+      config :fal_ex,
+        api_key: "your-api-key"
+
+      # config/runtime.exs (for runtime configuration)
+      import Config
+
+      if config_env() == :prod do
+        config :fal_ex,
+          api_key: System.fetch_env!("FAL_KEY")
+      end
+
+  You can also use environment variables (these override application config):
 
       export FAL_KEY="your-api-key"
 
-  Or configure programmatically:
+  Or configure programmatically at runtime:
 
       FalEx.config(credentials: "your-api-key")
 
@@ -42,12 +56,12 @@ defmodule FalEx do
       )
 
       # Streaming responses
-      stream = FalEx.stream("fal-ai/llava-v15",
-        input: %{prompt: "Tell me a story"}
+      {:ok, stream} = FalEx.stream("fal-ai/flux/dev",
+        input: %{prompt: "A cute robot", image_size: "square"}
       )
 
       stream
-      |> Stream.each(fn chunk -> IO.write(chunk.data) end)
+      |> Stream.each(fn chunk -> IO.inspect(chunk) end)
       |> Stream.run()
   """
 
@@ -85,7 +99,10 @@ defmodule FalEx do
   # Public API
 
   @doc """
-  Configures the global FalEx client.
+  Configures the global FalEx client at runtime.
+
+  Note: The recommended way to configure FalEx is through application configuration.
+  Use this function only when you need to override configuration at runtime.
 
   ## Options
 
@@ -93,12 +110,21 @@ defmodule FalEx do
 
   ## Examples
 
+      # Override configuration at runtime
       FalEx.config(credentials: System.get_env("FAL_KEY"))
 
+      # Configure with multiple options
       FalEx.config(
         credentials: {"key_id", "key_secret"},
         proxy_url: "/api/fal/proxy"
       )
+
+  ## Application Configuration (Recommended)
+
+      # In config/config.exs or config/runtime.exs
+      config :fal_ex,
+        api_key: System.get_env("FAL_KEY"),
+        base_url: "https://fal.run"
   """
   def config(opts \\ []) do
     GenServer.call(@name, {:config, opts})

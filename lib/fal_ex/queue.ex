@@ -35,7 +35,7 @@ defmodule FalEx.Queue do
 
   ## Examples
 
-      {:ok, %{request_id: request_id}} = Queue.submit(queue, "fal-ai/fast-sdxl", 
+      {:ok, %{"request_id" => request_id}} = Queue.submit(queue, "fal-ai/fast-sdxl", 
         input: %{prompt: "A cat"}
       )
   """

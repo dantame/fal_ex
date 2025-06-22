@@ -18,10 +18,7 @@ defmodule FalEx.Types do
           optional(:request_strategy) => String.t()
         }
 
-  @type result :: %{
-          data: output(),
-          request_id: request_id()
-        }
+  @type result :: map()
 
   @type queue_status ::
           :in_queue
