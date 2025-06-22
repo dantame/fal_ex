@@ -1,6 +1,6 @@
 # FalEx
 
-The official Elixir client for [fal.ai](https://fal.ai) - Serverless AI/ML inference platform.
+An Elixir client for [fal.ai](https://fal.ai) - Serverless AI/ML inference platform.
 
 [![Hex.pm](https://img.shields.io/hexpm/v/fal_ex.svg)](https://hex.pm/packages/fal_ex)
 [![Documentation](https://img.shields.io/badge/documentation-gray)](https://hexdocs.pm/fal_ex)
@@ -454,6 +454,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Support
 
 - 📚 [Documentation](https://hexdocs.pm/fal_ex)
-- 💬 [Discord Community](https://discord.gg/fal)
-- 🐛 [Issue Tracker](https://github.com/yourusername/fal_ex/issues)
-- 📧 [Email Support](mailto:support@fal.ai)
+- 🐛 [Issue Tracker](https://github.com/dantame/fal_ex/issues)
