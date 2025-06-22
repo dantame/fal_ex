@@ -2,7 +2,7 @@ defmodule FalEx.MixProject do
   use Mix.Project
 
   @version "0.1.0"
-  @source_url "https://github.com/yourusername/fal_ex"
+  @source_url "https://github.com/dantame/fal_ex"
 
   def project do
     [
@@ -76,7 +76,7 @@ defmodule FalEx.MixProject do
         "GitHub" => @source_url,
         "fal.ai" => "https://fal.ai"
       },
-      maintainers: ["Your Name"]
+      maintainers: ["Dan Tame"]
     ]
   end
 

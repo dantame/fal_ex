@@ -46,13 +46,13 @@ defmodule FalEx.Config do
 
       # Using API key from environment
       FalEx.Config.new(credentials: System.get_env("FAL_KEY"))
-      
+
       # Using key ID and secret
       FalEx.Config.new(credentials: {"key_id", "key_secret"})
-      
+
       # Using a resolver function
       FalEx.Config.new(credentials: fn -> System.get_env("FAL_KEY") end)
-      
+
       # Using proxy
       FalEx.Config.new(proxy_url: "/api/fal/proxy")
   """
@@ -138,7 +138,7 @@ defmodule FalEx.Config do
       This is not recommended as it exposes your credentials.
 
       Consider using a proxy server to protect your API keys.
-      See: https://github.com/yourusername/fal_ex#proxy
+      See: https://github.com/dantame/fal_ex#proxy
       """)
     end
 
